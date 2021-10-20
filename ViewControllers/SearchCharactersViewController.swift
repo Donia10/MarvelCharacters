@@ -10,6 +10,8 @@ import UIKit
 
 class SearchCharactersViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var cancelBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
