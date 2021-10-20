@@ -93,7 +93,13 @@ extension CharactersViewController : UITableViewDelegate , UITableViewDataSource
                              print(" count is \(charactersList.count)")
                              }
                          }
-
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let details = (storyboard?.instantiateViewController(withIdentifier: "DetailsCharacterViewController")) as? DetailsCharacterViewController
+            else {return}
+//        newsDetails.article = articles?[indexPath.row]
+        navigationController?.pushViewController(details, animated: true)
     }
 }
