@@ -69,7 +69,8 @@ extension CharactersViewController : UITableViewDelegate , UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           let cell = charactersTableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell", for: indexPath) as! CharacterTableViewCell
         cell.layer.cornerRadius = 8
-        cell.clipsToBounds = true
+        cell.layer.masksToBounds = true
+        cell.selectionStyle = .none
         cell.character = viewModel?.getCharacterCell(from: charactersList[indexPath.row])
         print("cellforRowAt")
         return cell

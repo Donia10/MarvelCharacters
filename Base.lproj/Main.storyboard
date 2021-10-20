@@ -78,7 +78,7 @@
                                     <segue destination="ZzX-Lk-GHo" kind="show" id="Jt7-G0-Nxt"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="marvel-logo" style="plain" id="uk0-CE-M5E">
+                            <barButtonItem title="Item" image="marvel-logo" width="20" style="plain" id="uk0-CE-M5E">
                                 <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </barButtonItem>
                         </rightBarButtonItems>
