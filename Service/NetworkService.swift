@@ -12,6 +12,7 @@ import Alamofire
 
 protocol NetworkServiceProtocol {
     func getCharacters(offset:Int,completion: @escaping (Dataa?, Error?) -> ())
+    func getSearchResults(name:String,completion: @escaping ([Character]?, Error?) -> ())
 
 }
 class NetworkService :NetworkServiceProtocol{
@@ -32,5 +33,22 @@ class NetworkService :NetworkServiceProtocol{
                }
            }
        }
+    func getSearchResults(name:String,completion: @escaping ([Character]?, Error?) -> ()) {
+     
+     AF.request(URLs.getSearchResults(name: name)).validate().responseDecodable(of: Characters.self) { (response) in
+
+            switch response.result {
+                case .success( _):
+
+                    guard let data = response.value?.data?.results else { return }
+                 completion(data, nil)
+
+                case .failure(let error):
+
+                    print(error)
+                    completion(nil, error)
+            }
+        }
+    }
     
 }

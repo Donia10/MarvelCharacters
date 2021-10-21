@@ -16,12 +16,15 @@ class SearchTableViewCell: UITableViewCell {
     
     var charCell:CharacterCell?{
         didSet{
+            charNameLbl.text = charCell?.name
+            CharImage.sd_setImage(with: URL(string: "\(charCell?.imagePath ?? "")/standard_small.\(charCell?.imageExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
             
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+         viewCell.layer.cornerRadius = viewCell.frame.height / 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

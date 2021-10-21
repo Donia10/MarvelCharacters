@@ -20,18 +20,15 @@ protocol CharactersViewModelProtocol {
     
 }
 class CharactersViewModel :CharactersViewModelProtocol {
- 
     var networkService:NetworkServiceProtocol?
     var characters:[Character]?{
         didSet{
             bindCharactersToView()
         }
     }
-    
     var error:String?{
         didSet{
             bindError()
-            
         }
     }
     var data: Dataa?{
@@ -44,6 +41,7 @@ class CharactersViewModel :CharactersViewModelProtocol {
     init() {
         networkService = NetworkService()
     }
+    
     func getCharacters(offset:Int){
         (networkService?.getCharacters(offset: offset){ [weak self] (data,error) in
             if let error:Error = error {
@@ -57,10 +55,10 @@ class CharactersViewModel :CharactersViewModelProtocol {
                 self?.data = data
             }
             
-            
             })
     }
     func getCharacterCell(from character:Character) -> CharacterCell {
         return CharacterCell(name: character.name, imagePath: character.thumbnail?.path, imageExtension: character.thumbnail?.thumExtension)
+        
     }
 }

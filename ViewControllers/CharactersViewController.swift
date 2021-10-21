@@ -25,11 +25,9 @@ class CharactersViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
            tabBarController?.tabBar.items![0].title = "Home"
-
        }
     override func viewDidLayoutSubviews() {
                 self.navigationItem.hidesBackButton = true
-
     }
 
     func setupData() {
@@ -79,7 +77,6 @@ extension CharactersViewController : UITableViewDelegate , UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 210
     }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
        print("willDisplay")
 
@@ -93,13 +90,11 @@ extension CharactersViewController : UITableViewDelegate , UITableViewDataSource
                              print(" count is \(charactersList.count)")
                              }
                          }
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let details = (storyboard?.instantiateViewController(withIdentifier: "DetailsCharacterViewController")) as? DetailsCharacterViewController
             else {return}
-//        newsDetails.article = articles?[indexPath.row]
         navigationController?.pushViewController(details, animated: true)
     }
 }
