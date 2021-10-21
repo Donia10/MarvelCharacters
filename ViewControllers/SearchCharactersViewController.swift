@@ -50,7 +50,11 @@ class SearchCharactersViewController: UIViewController {
         }.disposed(by: disposeBag)
 
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+                navigationController?.setNavigationBarHidden(true, animated: true)
+
+    }
 
     /*
     // MARK: - Navigation

@@ -23,12 +23,6 @@ class CharactersViewController: UIViewController {
         setupData()
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-           tabBarController?.tabBar.items![0].title = "Home"
-       }
-    override func viewDidLayoutSubviews() {
-                self.navigationItem.hidesBackButton = true
-    }
 
     func setupData() {
         viewModel = CharactersViewModel()
