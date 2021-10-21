@@ -25,18 +25,9 @@ struct Character:Codable {
     let thumbnail:Thumbnail?
     let comics:Comics?
     let series:Series?
- //   let stories:Stories?
-//    let urls:[Url]?
-//    enum CodingKeys:String,CodingKey {
-//          case id = "id"
-//          case name = "name"
-//          case description = "description"
-//          case thumbnail = "thumbnail"
-//          case comics = "comics"
-//          case series = "series"
-//          case stories = "stories"
-//          case urls = "urls"
-//      }
+    let events:Events?
+    let stories:Stories?
+
 }
 struct Thumbnail:Codable {
     let path:String?
@@ -66,11 +57,11 @@ struct SeriesItems:Codable {
     let name:String?
     let type:String?
 }
-struct Stories {
-    let available :Int?
+struct Stories:Codable {
+    let available:Int?
+    let returned:Int?
     let collectionURI:String?
     let items:[Story]?
-    let returned:Int?
 }
 struct Story:Codable {
     let resourceURI:String?

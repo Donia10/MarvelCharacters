@@ -16,7 +16,10 @@ class DetailsCharacterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
 
+     }
     /*
     // MARK: - Navigation
 
