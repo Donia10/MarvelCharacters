@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailsTableViewController: UITableViewController {
-
+    
     @IBOutlet weak var headerImageVirew: UIImageView!
     @IBOutlet weak var charTitleLbl: UILabel!
     @IBOutlet weak var charDescriptionLbl: UILabel!
@@ -21,6 +21,7 @@ class DetailsTableViewController: UITableViewController {
     
     @IBOutlet weak var storiesCollectionView: UICollectionView!
     var character:Character?
+    var viewModel:DetailsViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         comicsCollectionView.delegate = self
@@ -36,51 +37,52 @@ class DetailsTableViewController: UITableViewController {
         charDescriptionLbl.text = character?.description
         
         
-        
-
     }
-
-   
+    
+    
 }
 extension DetailsTableViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.comicsCollectionView {
-            return 5
-        }else if collectionView == self.eventsCollectionView {
-                   return 5
-        }else if collectionView == self.seriesCollectionView {
-                   return 5
-        }else if collectionView == self.storiesCollectionView {
-                   return 5
-        }else{
-            return 0
+     
+        if collectionView == comicsCollectionView {
+            return character?.comics?.items?.count ?? 0
+        }else  if collectionView == seriesCollectionView {
+            return character?.series?.items?.count ?? 0
+        }else  if collectionView == storiesCollectionView {
+            return character?.stories?.items?.count ?? 0
+        }else {
+            
+            return character?.events?.items?.count ?? 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.comicsCollectionView{
-        let comicCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicCollectionViewCell", for: indexPath) as! ComicCollectionViewCell
-        return comicCell
-            
-        } else if collectionView == self.eventsCollectionView {
-             let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
-            return eventCell
         
-        }else if collectionView == self.eventsCollectionView {
-             let storyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCollectionViewCell", for: indexPath) as! StoryCollectionViewCell
+        if collectionView == comicsCollectionView {
+            let storyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicCollectionViewCell", for: indexPath) as! ComicCollectionViewCell
+            storyCell.comic = character?.comics?.items?[indexPath.row]
             return storyCell
-       }
-        else if collectionView == self.seriesCollectionView {
+            
+        }else  if collectionView == seriesCollectionView {
             let seriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeriesCollectionViewCell", for: indexPath) as! SeriesCollectionViewCell
+            seriesCell.series = character?.series?.items?[indexPath.row]
             return seriesCell
+            
+        }else  if collectionView == storiesCollectionView {
+            let storyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCollectionViewCell", for: indexPath) as! StoryCollectionViewCell
+            storyCell.story = character?.stories?.items?[indexPath.row]
+            return storyCell
+            
         }
-        else {
-            return UICollectionViewCell()
+        else{
+            let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCollectionViewCell", for: indexPath) as! EventCollectionViewCell
+            eventCell.event = character?.events?.items?[indexPath.row]
+            return eventCell
         }
-
         
         
-         
+        
+        
     }
     
     

@@ -10,13 +10,21 @@ import UIKit
 
 class ComicCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var comicLbl: UILabel!
-    @IBOutlet weak var comicImgView: UIImageView!
+    @IBOutlet private weak var comicLbl: UILabel!
+    @IBOutlet private weak var comicImgView: UIImageView!
     var comic:Item?{
         didSet{
             comicLbl.text = comic?.name
-//            comicImgView.sd_setImage(with: URL(string: "\(comic?.imagePath ?? "")/standard_small.\(character?.imageExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
+            let viewModel = DetailsViewModel()
+            viewModel.getComicImages(resourceURI: comic?.resourceURI ?? "")
             
-        }
+            viewModel.bindData = { [weak self] in
+              guard let thumbnail = viewModel.thumbnail else {
+                    return
+                }
+                self?.comicImgView.sd_setImage(with: URL(string: "\(thumbnail.path ?? "")/standard_small.\(thumbnail.thumExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
+                    
+                }
+            }
     }
 }

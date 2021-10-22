@@ -15,6 +15,18 @@ class EventCollectionViewCell: UICollectionViewCell {
     var event:Item?{
         didSet{
             eventLbl.text = event?.name
+            
+            let viewModel = DetailsViewModel()
+                       viewModel.getComicImages(resourceURI: event?.resourceURI ?? "")
+                       
+                       viewModel.bindData = { [weak self] in
+                         guard let thumbnail = viewModel.thumbnail else {
+                               return
+                           }
+                           self?.eventImgView.sd_setImage(with: URL(string: "\(thumbnail.path ?? "")/standard_small.\(thumbnail.thumExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
+                               
+                           
+                       }
         }
     }
 }

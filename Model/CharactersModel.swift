@@ -82,3 +82,14 @@ struct Url {
     let type:String?
     let url:String?
 }
+
+struct ComicsResponse:Codable {
+    let data:ComicsData?
+}
+struct ComicsData:Codable {
+    let results:[ComicResults]?
+}
+struct ComicResults :Codable{
+    let thumbnail:Thumbnail?
+
+}

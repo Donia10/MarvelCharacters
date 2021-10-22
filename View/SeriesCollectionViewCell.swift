@@ -11,10 +11,21 @@ import UIKit
 class SeriesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var seriesImgView: UIImageView!
     @IBOutlet weak var serieLbl: UILabel!
-    var series:Item?{
+    var series:SeriesItems?{
         didSet{
             serieLbl.text = series?.name
+            let viewModel = DetailsViewModel()
+                       viewModel.getComicImages(resourceURI: series?.resourceURI ?? "")
+                       
+                       viewModel.bindData = { [weak self] in
+                         guard let thumbnail = viewModel.thumbnail else {
+                               return
+                           }
+                           self?.seriesImgView.sd_setImage(with: URL(string: "\(thumbnail.path ?? "")/standard_small.\(thumbnail.thumExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
+                               
+                           }
+                       }
         }
-    }
+    
     
 }

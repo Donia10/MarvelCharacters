@@ -13,7 +13,7 @@ import Alamofire
 protocol NetworkServiceProtocol {
     func getCharacters(offset:Int,completion: @escaping (Dataa?, Error?) -> ())
     func getSearchResults(name:String,completion: @escaping ([Character]?, Error?) -> ())
-
+    func getComics(resourseURI:String,completion: @escaping (Thumbnail?, Error?) -> ()) 
 }
 class NetworkService :NetworkServiceProtocol{
     func getCharacters(offset:Int,completion: @escaping (Dataa?, Error?) -> ()) {
@@ -50,5 +50,21 @@ class NetworkService :NetworkServiceProtocol{
             }
         }
     }
-    
+    func getComics(resourseURI:String,completion: @escaping (Thumbnail?, Error?) -> ()) {
+          
+          AF.request(URLs.getComicsImage(resourseUrI: resourseURI)).validate().responseDecodable(of: ComicsResponse.self) { (response) in
+
+                 switch response.result {
+                     case .success( _):
+
+                        guard let image = response.value?.data?.results?[0].thumbnail else { return }
+                      completion(image, nil)
+
+                     case .failure(let error):
+
+                         print(error)
+                         completion(nil, error)
+                 }
+             }
+         }
 }
