@@ -35,11 +35,15 @@ class DetailsTableViewController: UITableViewController {
         
         charTitleLbl.text = character?.name
         charDescriptionLbl.text = character?.description
-        
-        
+        print("desc = \(character?.description)")
+        headerImageVirew.sd_setImage(with: URL(string: "\(character?.thumbnail?.path ?? "")/standard_small.\(character?.thumbnail?.thumExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
+                               
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+     //   navigationController?.setNavigationBarHidden(true, animated: true)
+
+       }
 }
 extension DetailsTableViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,9 +63,9 @@ extension DetailsTableViewController: UICollectionViewDelegate,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == comicsCollectionView {
-            let storyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicCollectionViewCell", for: indexPath) as! ComicCollectionViewCell
-            storyCell.comic = character?.comics?.items?[indexPath.row]
-            return storyCell
+            let comicCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ComicCollectionViewCell", for: indexPath) as! ComicCollectionViewCell
+            comicCell.comic = character?.comics?.items?[indexPath.row]
+            return comicCell
             
         }else  if collectionView == seriesCollectionView {
             let seriesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeriesCollectionViewCell", for: indexPath) as! SeriesCollectionViewCell
