@@ -11,7 +11,7 @@ import UIKit
 class SeriesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var seriesImgView: UIImageView!
     @IBOutlet weak var serieLbl: UILabel!
-    var series:SeriesItems?{
+    var series:Item?{
         didSet{
             serieLbl.text = series?.name
             let viewModel = DetailsViewModel()

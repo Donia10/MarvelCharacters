@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 struct Characters:Codable {
     let data :Dataa?
 }
@@ -49,24 +49,13 @@ struct Comics:Codable {
 
 struct Series:Codable {
     let available:Int?
-    let items:[SeriesItems]?
-}
-
-struct SeriesItems:Codable {
-    let resourceURI:String?
-    let name:String?
-    let type:String?
+    let items:[Item]?
 }
 struct Stories:Codable {
     let available:Int?
     let returned:Int?
     let collectionURI:String?
-    let items:[Story]?
-}
-struct Story:Codable {
-    let resourceURI:String?
-    let name:String?
-    let type:String?
+    let items:[Item]?
 }
 struct Item:Codable {
     let resourceURI:String?
@@ -93,3 +82,13 @@ struct ComicResults :Codable{
     let thumbnail:Thumbnail?
 
 }
+
+var items = [Item(resourceURI: "", name: "item1"),Item(resourceURI: "", name: "item2"),
+Item(resourceURI: "", name: "item3"),Item(resourceURI: "", name: "item4"),Item(resourceURI: "", name: "item1")]
+
+var items2 = [Item(resourceURI: "", name: "event1"),Item(resourceURI: "", name: "event1"),
+Item(resourceURI: "", name: "event1"),Item(resourceURI: "", name: "event1"),Item(resourceURI: "", name: "item1")]
+
+var tabs = ["Comics","Events","Series","Stories"]
+
+var dummyCharacter = Character(id: 5, name: "Dummy Data", description: "jbkfkdkbnb", thumbnail: Thumbnail(path: "", thumExtension: ""), comics: Comics(available: 0, returned: 0, collectionURI: "", items: items), series: Series(available: 0, items: items2),events: Events(available: 0, collectionURI: "", items: items2, returned: 0), stories: Stories(available: 0, returned: 0, collectionURI: "", items: items))

@@ -707,6 +707,14 @@
             </objects>
             <point key="canvasLocation" x="2045" y="78"/>
         </scene>
+        <!--Hosting View Controller-->
+        <scene sceneID="xiY-79-pWA">
+            <objects>
+                <hostingController id="UvI-BC-Yrt" customClass="HostingViewController" customModule="MarvelCharacters" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rVi-BN-Xug" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3557" y="723"/>
+        </scene>
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>

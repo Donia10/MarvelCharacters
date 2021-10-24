@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class CharactersViewController: UIViewController {
     @IBOutlet private weak var charactersTableView: UITableView!
@@ -87,11 +88,14 @@ extension CharactersViewController : UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let details = (storyboard?.instantiateViewController(withIdentifier: "DetailsCharacterViewController")) as? DetailsCharacterViewController
-//            else {return}
-           guard let details = (storyboard?.instantiateViewController(withIdentifier: "DetailsTableViewController")) as? DetailsTableViewController
-                    else {return}
-        details.character = charactersList[indexPath.row]
-        navigationController?.pushViewController(details, animated: true)
+//        guard let details = (storyboard?.instantiateViewController(withIdentifier:"DetailsTableViewController")) as? DetailsTableViewController
+//                    else {return}
+//        details.character = charactersList[indexPath.row]
+//        navigationController?.pushViewController(details, animated: true)
+        
+        // Navigate to host
+        let host = UIHostingController(rootView: CharacterDetails(character: charactersList[indexPath.row]))
+        
+        navigationController?.pushViewController(host, animated: true)
     }
 }

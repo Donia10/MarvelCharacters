@@ -11,7 +11,7 @@ import UIKit
 class StoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var storyImView: UIImageView!
     @IBOutlet weak var storyLblView: UILabel!
-    var story:Story?{
+    var story:Item?{
         didSet{
             storyLblView.text = story?.name
             let viewModel = DetailsViewModel()
