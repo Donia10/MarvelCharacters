@@ -24,7 +24,7 @@ protocol DetailsModelProtocol {
     var error:String?{get set}
     var bindError:()->() {get set}
     var bindData:()->() {get set}
-    func getComicImages(resourceURI:String)
+    func getImages(resourceURI:String)
 }
 class DetailsViewModel :DetailsModelProtocol ,ObservableObject{
     let objectWillChange = ObjectWillChangePublisher()
@@ -48,9 +48,9 @@ class DetailsViewModel :DetailsModelProtocol ,ObservableObject{
         
     }
     
-    func getComicImages(resourceURI:String){
+    func getImages(resourceURI:String){
         print("getImages func")
-        (networkService?.getComics(resourseURI: resourceURI){ [weak self] (data,error) in
+        (networkService?.getImage(resourseURI: resourceURI){ [weak self] (data,error) in
             if let error:Error = error {
                 let message = error.localizedDescription
                 self?.error = message

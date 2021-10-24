@@ -15,7 +15,7 @@ struct CardView: View {
     init(item:Item) {
         self.item = item
 
-        viewModel.getComicImages(resourceURI: item.resourceURI ?? "")
+        viewModel.getImages(resourceURI: item.resourceURI ?? "")
         print("----\(self.item.name)")
     }
     var body: some View {
