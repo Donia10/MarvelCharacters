@@ -24,6 +24,10 @@ class CharactersViewController: UIViewController {
         setupData()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+           navigationController?.setNavigationBarHidden(false, animated: true)
+           
+       }
 
     func setupData() {
         viewModel = CharactersViewModel()

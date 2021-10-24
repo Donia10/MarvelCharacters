@@ -24,7 +24,8 @@ class SearchTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-         viewCell.layer.cornerRadius = viewCell.frame.height / 5
+         viewCell.layer.cornerRadius = viewCell.frame.height / 12
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
