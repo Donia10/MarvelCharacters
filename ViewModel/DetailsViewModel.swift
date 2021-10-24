@@ -17,6 +17,7 @@ import Foundation
 
 import Foundation
 import Alamofire
+import SwiftUI
 protocol DetailsModelProtocol {
     var networkService:NetworkServiceProtocol? { get set }
     var thumbnail:Thumbnail?{get set}
@@ -25,7 +26,8 @@ protocol DetailsModelProtocol {
     var bindData:()->() {get set}
     func getComicImages(resourceURI:String)
 }
-class DetailsViewModel :DetailsModelProtocol {
+class DetailsViewModel :DetailsModelProtocol ,ObservableObject{
+    let objectWillChange = ObjectWillChangePublisher()
     var networkService:NetworkServiceProtocol?
     
     var error:String?{
@@ -35,7 +37,8 @@ class DetailsViewModel :DetailsModelProtocol {
     }
     var thumbnail: Thumbnail?{
         didSet {
-            bindData()
+           // bindData()
+            objectWillChange.send()
         }
     }
     var bindData: () -> () = {}
@@ -46,6 +49,7 @@ class DetailsViewModel :DetailsModelProtocol {
     }
     
     func getComicImages(resourceURI:String){
+        print("getImages func")
         (networkService?.getComics(resourseURI: resourceURI){ [weak self] (data,error) in
             if let error:Error = error {
                 let message = error.localizedDescription

@@ -13,21 +13,21 @@ struct HeaderView: View {
     var description:String
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 15) {
             Text(name)
                 .font(.title)
                 .fontWeight(.bold)
-            
+            Spacer()
             Text("Description")
-                .font(.subheadline)
-            
+                     .font(.subheadline)
+                     .fontWeight(.bold)
             Text(description)
-                .font(.caption)
+                .font(.body)
             
             
         }
         .padding(.horizontal)
-        .frame(height:100)
+        .frame(height:150)
         .background(Color.white)
         
     }

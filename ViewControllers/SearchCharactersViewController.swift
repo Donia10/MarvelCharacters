@@ -37,8 +37,9 @@ class SearchCharactersViewController: UIViewController {
                 }.disposed(by:disposeBag )
         charTableView.rx.modelSelected(Character.self).subscribe{
             [weak self] (selectedCharacter) in
-            guard let details = (self?.storyboard?.instantiateViewController(withIdentifier: "DetailsCharacterViewController")) as? DetailsCharacterViewController
+            guard let details = (self?.storyboard?.instantiateViewController(withIdentifier: "DetailsTableViewController")) as? DetailsTableViewController
                         else {return}
+            details.character = selectedCharacter.element
             self?.navigationController?.pushViewController(details, animated: true)
             
         }.disposed(by: disposeBag)
@@ -55,18 +56,6 @@ class SearchCharactersViewController: UIViewController {
                 navigationController?.setNavigationBarHidden(true, animated: true)
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-   **/
-    
-    
 
 }
 extension SearchCharactersViewController :UITableViewDelegate{

@@ -15,7 +15,7 @@ struct CharacterDetails: View {
             VStack{
                 //Stetchy Header
                 GeometryReader{ g in
-                    Image("mcu-background")
+                    Image(uiImage:"\(self.character.thumbnail?.path ?? "")/standard_small.\(self.character.thumbnail?.thumExtension ?? "")".load())
                     .resizable()
                     // fixing the view to the top will give strechy
                     // increasing height by drag amount
@@ -32,7 +32,8 @@ struct CharacterDetails: View {
                 Section(header: HeaderView(name: character.name ?? "", description: character.description ?? "")){
                     //Tabs with content
                 //    ForEach(tabs, id: \.self){ tab in
-                        VStack(alignment: .leading, spacing: 15, content: {
+                    Spacer()
+                        VStack(alignment: .leading, spacing: 10, content: {
                             Text("Comics")
                                 .font(.subheadline)
                                 .fontWeight(.bold)
@@ -107,3 +108,17 @@ struct CharacterDetails_Previews: PreviewProvider {
     }
 }
 
+extension String {
+    func load()->UIImage {
+        do {
+            guard let url = URL(string: self)else {
+                return UIImage()
+            }
+            let data:Data = try Data(contentsOf: url)
+            return UIImage(data:data) ?? UIImage()
+        }catch{
+            
+        }
+        return UIImage()
+    }
+}
