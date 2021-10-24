@@ -29,6 +29,9 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="exR-A0-zq4">
                                                     <rect key="frame" x="20" y="11" width="374" height="233"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="htt-ip-6UT"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADF-Zi-bku">
                                                     <rect key="frame" x="20" y="214" width="374" height="30"/>
@@ -74,13 +77,13 @@
                     <navigationItem key="navigationItem" id="cLF-kW-pqH">
                         <rightBarButtonItems>
                             <barButtonItem image="magnifyingglass" catalog="system" id="BNb-PV-Q4O">
-                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.73366838690000002" green="0.098675914109999999" blue="0.11307806519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="ZzX-Lk-GHo" kind="show" id="Jt7-G0-Nxt"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="marvel-logo" width="20" style="plain" id="uk0-CE-M5E">
-                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.84461230040000002" green="0.11760327969999999" blue="0.020331649109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>

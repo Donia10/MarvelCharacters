@@ -36,14 +36,6 @@ class CharactersViewController: UIViewController {
         
     }
     func onDataSuccessUpdateView(){
-//        guard let characters = viewModel?.characters else {
-//            return
-//        }
-//        for character in characters {
-//            self.charactersList.append(character)
-//        }
-//
-//        charactersTableView.reloadData()
         guard let characters = viewModel?.data?.results else { return  }
         for character in characters {
                     self.charactersList.append(character)

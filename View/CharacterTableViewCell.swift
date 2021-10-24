@@ -18,7 +18,7 @@ class CharacterTableViewCell: UITableViewCell {
           didSet{
         
             nameTxtView.text = character?.name ?? "no name"
-            characterImgView.sd_setImage(with: URL(string: "\(character?.imagePath ?? "")/standard_small.\(character?.imageExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
+            characterImgView.sd_setImage(with: URL(string: "\(character?.imagePath ?? "")/standard_medium.\(character?.imageExtension ?? "")"), placeholderImage: UIImage(named: "image-placeholder"))
             
                 
             }

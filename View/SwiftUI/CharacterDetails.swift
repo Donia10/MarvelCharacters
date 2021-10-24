@@ -15,7 +15,7 @@ struct CharacterDetails: View {
             VStack{
                 //Stetchy Header
                 GeometryReader{ g in
-                    Image(uiImage:"\(self.character.thumbnail?.path ?? "")/standard_small.\(self.character.thumbnail?.thumExtension ?? "")".load())
+                    Image(uiImage:"\(self.character.thumbnail?.path ?? "")/standard_large.\(self.character.thumbnail?.thumExtension ?? "")".load())
                     .resizable()
                     // fixing the view to the top will give strechy
                     // increasing height by drag amount
